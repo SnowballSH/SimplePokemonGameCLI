@@ -2,7 +2,7 @@ require_relative './pkm.rb'
 require_relative './move.rb'
 
 def one_hit(prompt, p1, p2)
-  choice = p1.moves.pretty_p prompt
+  choice = p1.moves.pretty_p prompt, p1.name
   move = p1.moves[choice]
   slowp "#{p1.name} used #{move.name}! It caused #{move.attk} damage."
   p2.hit_by_move(move)
@@ -14,6 +14,7 @@ def battle(p1, p2)
 
   slowp p1.stat
   slowp p2.stat
+  puts "\n"
 
   until p1.fainted? || p2.fainted?
     [[p1, p2], [p2, p1]].each do |set|
