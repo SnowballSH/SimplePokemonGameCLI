@@ -7,19 +7,19 @@ def one_hit(prompt, p1, p2)
   factor = p2.factor(move)
   dmg = p2.calc_dmg(p1, move, factor)
 
-  slowp "#{p1.name} used #{move.name}!"
+  slowp "#{p1.name} used #{move.name}!".colorize(:default)
 
   txt = case factor
         when 0.5
-          'It is not very effective...'
+          'It is not very effective...'.colorize(:default)
         when 2
-          'It is super effective!'
+          'It is super effective!'.colorize(:light_magenta)
         when 0.25
-          'It has almost no effect...'
+          'It has almost no effect...'.colorize(:default)
         when 4
-          'It is extremely effective!'
+          'It is extremely effective!'.colorize(:light_magenta)
         when 0
-          'It has no effect...'
+          'It has no effect...'.colorize(:light_red)
         end
 
   slowp txt unless txt.nil?
@@ -41,5 +41,5 @@ def battle(p1, p2)
       break if p1.fainted? || p2.fainted?
     end
   end
-  slowp "#{p1.fainted? ? p1.name : p2.name} fainted! #{p2.fainted? ? p1.name : p2.name} is the winner!"
+  slowp "#{p1.fainted? ? p1.name : p2.name} fainted! #{p2.fainted? ? p1.name : p2.name} is the winner!".colorize(:light_green)
 end
