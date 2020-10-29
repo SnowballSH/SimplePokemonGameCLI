@@ -5,7 +5,7 @@ def one_hit(prompt, p1, p2)
   choice = p1.moves.pretty_p prompt, p1.name
   move = p1.moves[choice]
   factor = p2.factor(move)
-  dmg = (move.attk * factor).round
+  dmg = p2.calc_dmg(p1, move, factor)
 
   slowp "#{p1.name} used #{move.name}!"
 
@@ -25,7 +25,7 @@ def one_hit(prompt, p1, p2)
   slowp txt unless txt.nil?
 
   p2.hit(dmg)
-  slowp "#{p2.name} now has #{p2.real_hp} hp."
+  slowp p2.health_bar
 end
 
 def battle(p1, p2)
