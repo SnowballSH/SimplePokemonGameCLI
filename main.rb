@@ -6,7 +6,7 @@ require_relative './data.rb'
 require 'tty-prompt'
 
 def main
-  battle(get_pokemon('lapras'), get_pokemon('raichu'))
+  battle(get_pokemon('lapras'), get_pokemon('lapras'))
 end
 
 begin

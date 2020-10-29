@@ -4,8 +4,27 @@ require_relative './move.rb'
 def one_hit(prompt, p1, p2)
   choice = p1.moves.pretty_p prompt, p1.name
   move = p1.moves[choice]
-  slowp "#{p1.name} used #{move.name}! It caused #{move.attk} damage."
-  p2.hit_by_move(move)
+  factor = p2.factor(move)
+  dmg = (move.attk * factor).round
+
+  slowp "#{p1.name} used #{move.name}!"
+
+  txt = case factor
+        when 0.5
+          'It is not very effective...'
+        when 2
+          'It is super effective!'
+        when 0.25
+          'It has almost no effect...'
+        when 4
+          'It is extremely effective!'
+        when 0
+          'It has no effect...'
+        end
+
+  slowp txt unless txt.nil?
+
+  p2.hit(dmg)
   slowp "#{p2.name} now has #{p2.real_hp} hp."
 end
 
