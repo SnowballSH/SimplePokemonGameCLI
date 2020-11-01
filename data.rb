@@ -1,10 +1,37 @@
+MOVES = {
+  # Normal
+  QuickAttack: ['Quick Attack', 25, 'Normal'],
+  Slam: ['Slam', 40, 'Normal'],
+  BodySlam: ['Body Slam', 40, 'Normal'],
+  Tackle: ['Tackle', 20, 'Normal'],
+  # Water
+  WaterPulse: ['Water Pulse', 30, 'Water'],
+  HydroPump: ['Hydro Pump', 55, 'Water'],
+  # Electric
+  Thunderbolt: ['Thunderbolt', 45, 'Electric'],
+  Thunder: ['Thunder', 55, 'Electric'],
+  Spark: ['Spark', 30, 'Electric'],
+  # Steel
+  IronTail: ['Iron Tail', 40, 'Steel'],
+  # Psychic
+  Psychic: ['Psychic', 45, 'Psychic'],
+  # Ground
+  Dig: ['Dig', 40, 'Ground'],
+  # Rock
+  StoneEdge: ['Stone Edge', 50, 'Rock'],
+  # Ice
+  IceBeam: ['Ice Beam', 45, 'Ice'],
+  # Dragon
+  DragonBreath: ['Dragon Breath', 30, 'Dragon']
+}.freeze
+
 POKEMONS = {
   pikachu: [
-    'Pikachu', 180, %w[Electric], [
-      ['Thunderbolt', 45, 'Electric'],
-      ['Iron Tail', 40, 'Steel'],
-      ['Spark', 30, 'Electric'],
-      ['Quick Attack', 25, 'Normal']
+    'Pikachu', 180, %w[Electric], %i[
+      Thunderbolt
+      IronTail
+      Spark
+      QuickAttack
     ],
     {
       Electric: 0.5,
@@ -16,11 +43,11 @@ POKEMONS = {
   ].freeze,
 
   alolan_raichu: [
-    'Raichu', 230, %w[Electric Psychic], [
-      ['Quick Attack', 30, 'Normal'],
-      ['Psychic', 45, 'Psychic'],
-      ['Slam', 40, 'Normal'],
-      ['Thunder', 55, 'Electric']
+    'Raichu', 230, %w[Electric Psychic], %i[
+      QuickAttack
+      Psychic
+      Slam
+      Thunder
     ],
     {
       Electric: 0.5,
@@ -37,11 +64,11 @@ POKEMONS = {
   ].freeze,
 
   lapras: [
-    'Lapras', 370, %w[Water Ice], [
-      ['Ice Beam', 45, 'Ice'],
-      ['Water Pulse', 30, 'Water'],
-      ['Body Slam', 40, 'Normal'],
-      ['Hydro Pump', 55, 'Water']
+    'Lapras', 370, %w[Water Ice], %i[
+      IceBeam
+      WaterPulse
+      BodySlam
+      HydroPump
     ],
     {
       Water: 0,
@@ -55,11 +82,11 @@ POKEMONS = {
   ].freeze,
 
   onix: [
-    'Onix', 180, %w[Rock Ground], [
-      ['Tackle', 20, 'Normal'],
-      ['Dragon Breath', 30, 'Dragon'],
-      ['Dig', 40, 'Ground'],
-      ['Stone Edge', 50, 'Rock']
+    'Onix', 180, %w[Rock Ground], %i[
+      Tackle
+      DragonBreath
+      Dig
+      StoneEdge
     ],
     {
       Normal: 0.5,

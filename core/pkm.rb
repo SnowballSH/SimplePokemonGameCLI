@@ -22,7 +22,7 @@ class Pokemon
     a = (x * bar).round
     a = a < 0 ? 0 : a
     b = bar - a
-    ("[#{@name}]  |" + '=' * a + '-' * b + '|').colorize(:light_blue)
+    ("[#{@name}]  |" + '=' * a + '-' * b + '|').colorize(:light_red)
   end
 
   def real_hp

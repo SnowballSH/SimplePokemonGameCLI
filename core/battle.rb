@@ -1,7 +1,7 @@
 require_relative './pkm.rb'
 require_relative './move.rb'
 
-def one_hit(prompt, p1, p2)
+def one_hit(prompt, p1, p2, l)
   choice = p1.moves.pretty_p prompt, p1.name
   move = p1.moves[choice]
   factor = p2.factor(move)
@@ -19,13 +19,14 @@ def one_hit(prompt, p1, p2)
         when 4
           'It is extremely effective!'.colorize(:light_magenta)
         when 0
-          'It has no effect...'.colorize(:light_red)
+          'It has no effect...'.colorize(:red)
         end
 
   slowp txt unless txt.nil?
 
   p2.hit(dmg)
-  slowp p2.health_bar
+  slowp l[0].health_bar
+  slowp l[1].health_bar
 end
 
 def battle(p1, p2)
@@ -37,9 +38,10 @@ def battle(p1, p2)
 
   until p1.fainted? || p2.fainted?
     [[p1, p2], [p2, p1]].each do |set|
-      one_hit(prompt, *set)
+      one_hit(prompt, *set, [p1, p2])
       break if p1.fainted? || p2.fainted?
     end
   end
   slowp "#{p1.fainted? ? p1.name : p2.name} fainted! #{p2.fainted? ? p1.name : p2.name} is the winner!".colorize(:light_green)
+  'SUCCESS'.colorize(:default)
 end
