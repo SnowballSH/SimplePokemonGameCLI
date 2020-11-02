@@ -6,13 +6,13 @@ require_relative '../data.rb'
 
 $stdout.sync = true
 
-def create_pokemon(name, hp, type, moves, tds, atk, def_)
+def create_pokemon(name, hp, type, moves, tds, atk, def_, speed)
   # create a new pokemon
   Pokemon.new(name, hp, Type.new(*type),
               MoveArray.new(moves.map do |y|
                 x = MOVES[y]
                 Move.new(x[0], x[1], Type.new(x[-1]))
-              end), tds, atk, def_)
+              end), tds, atk, def_, speed)
 end
 
 def slowp(txt, interval = INTERVAL)

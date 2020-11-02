@@ -37,7 +37,9 @@ def battle(p1, p2)
   puts "\n"
 
   until p1.fainted? || p2.fainted?
-    [[p1, p2], [p2, p1]].each do |set|
+    xx = [p1, p2].sort { |a, b| b.speed <=> a.speed }
+    yy = [p2, p1].sort { |a, b| a.speed <=> b.speed }
+    [xx, yy].each do |set|
       one_hit(prompt, *set, [p1, p2])
       break if p1.fainted? || p2.fainted?
     end

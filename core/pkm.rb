@@ -1,7 +1,7 @@
 class Pokemon
-  attr_accessor :name, :hp, :max_hp, :type, :moves, :type_defence, :attack, :defense
+  attr_accessor :name, :hp, :max_hp, :type, :moves, :type_defence, :attack, :defense, :speed
 
-  def initialize(name, hp, type, moves, type_defense, attack, defense)
+  def initialize(name, hp, type, moves, type_defense, attack, defense, speed)
     @name = name
     @hp = hp
     @max_hp = hp
@@ -10,6 +10,7 @@ class Pokemon
     @type_defense = type_defense
     @attack = attack
     @defense = defense
+    @speed = speed
   end
 
   def stat
