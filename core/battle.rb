@@ -7,7 +7,7 @@ def one_hit(prompt, p1, p2, l)
   factor = p2.factor(move)
   dmg = p2.calc_dmg(p1, move, factor)
 
-  slowp "#{p1.name} used #{move.name}!".colorize(:default)
+  slowp("#{p1.name} used #{move.name}!".colorize(:default))
 
   txt = case factor
         when 0.5
@@ -22,18 +22,19 @@ def one_hit(prompt, p1, p2, l)
           'It has no effect...'.colorize(:red)
         end
 
-  slowp txt unless txt.nil?
+  slowp(txt) unless txt.nil?
 
   p2.hit(dmg)
-  slowp l[0].health_bar
-  slowp l[1].health_bar
+  slowp(l[0].health_bar)
+  slowp(l[1].health_bar)
 end
 
+# Main Battle Function
 def battle(p1, p2)
   prompt = TTY::Prompt.new
 
-  slowp p1.stat
-  slowp p2.stat
+  slowp(p1.stat)
+  slowp(p2.stat)
   puts "\n"
 
   until p1.fainted? || p2.fainted?

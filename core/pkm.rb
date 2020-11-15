@@ -17,6 +17,7 @@ class Pokemon
     "#{@name} | #{@type.stat}"
   end
 
+  # Prints Health Bar Beautifully
   def health_bar
     x = (@hp.to_f / @max_hp.to_f)
     bar = 30
