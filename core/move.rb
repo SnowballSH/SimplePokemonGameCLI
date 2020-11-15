@@ -1,4 +1,4 @@
-Move = Struct.new(:name, :attk, :type) do
+Move = Struct.new(:name, :attk, :type, :special) do
 end
 
 class MoveArray < Array

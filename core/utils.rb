@@ -11,12 +11,18 @@ def create_pokemon(name, hp, type, moves, tds, atk, def_, speed)
   Pokemon.new(name, hp, Type.new(*type),
               MoveArray.new(moves.map do |y|
                 x = MOVES[y]
-                Move.new(x[0], x[1], Type.new(x[-1]))
+                Move.new(x[0], x[1], Type.new(x[2]), x[3])
               end), tds, atk, def_, speed)
 end
 
 def slowp(txt, interval = INTERVAL)
   # print slowly
+  txt.each_char { |c| putc c; $stdout.flush; sleep interval }
+  puts ''
+end
+
+def fastp(txt, interval = INTERVAL / 4 * 3)
+  # print fastly
   txt.each_char { |c| putc c; $stdout.flush; sleep interval }
   puts ''
 end

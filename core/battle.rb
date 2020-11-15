@@ -25,16 +25,18 @@ def one_hit(prompt, p1, p2, l)
   slowp(txt) unless txt.nil?
 
   p2.hit(dmg)
-  slowp(l[0].health_bar)
-  slowp(l[1].health_bar)
+  move.special.call(p1, p2) unless move.special.nil?
+
+  fastp(l[0].health_bar)
+  fastp(l[1].health_bar)
 end
 
 # Main Battle Function
 def battle(p1, p2)
   prompt = TTY::Prompt.new
 
-  slowp(p1.stat)
-  slowp(p2.stat)
+  fastp(p1.stat)
+  fastp(p2.stat)
   puts "\n"
 
   until p1.fainted? || p2.fainted?

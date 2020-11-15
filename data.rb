@@ -1,8 +1,13 @@
+Recoil_10 = proc do |atta, _defe|
+  atta.hit(10)
+  slowp("#{atta.name} is hurt by the recoil!")
+end
+
 MOVES = {
   # Normal
   QuickAttack: ['Quick Attack', 25, 'Normal'],
   Slam: ['Slam', 40, 'Normal'],
-  BodySlam: ['Body Slam', 40, 'Normal'],
+  BodySlam: ['Body Slam', 50, 'Normal', Recoil_10],
   Tackle: ['Tackle', 25, 'Normal'],
   # Water
   WaterPulse: ['Water Pulse', 30, 'Water'],
