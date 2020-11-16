@@ -1,10 +1,7 @@
 require_relative './pkm.rb'
 require_relative './move.rb'
 
-def one_hit(prompt, p1, p2, _l)
-  choice = p1.moves.pretty_p prompt, p1.name
-  # choice = rand(4)
-  move = p1.moves[choice]
+def one_hit(_prompt, move, p1, p2)
   factor = p2.factor(move)
   dmg = p2.calc_dmg(p1, move, factor)
 
@@ -39,18 +36,19 @@ def battle(p1, p2)
 
   until p1.fainted? || p2.fainted?
     xx = [p1, p2].sort { |a, b| b.speed <=> a.speed }
-    yy = [p2, p1].sort { |a, b| a.speed <=> b.speed }
-    [xx, yy].each do |set|
-      one_hit(prompt, *set, [p1, p2])
+
+    moves = []
+
+    xx.each_with_index do |set, i|
+      choice = set.moves.pretty_p prompt, p1.name
+      # choice = rand(4)
+      moves[i] = set.moves[choice]
+    end
+
+    xx.each_index do |i|
+      one_hit(prompt, moves[i], xx[i], xx.reverse[i])
 
       break if p1.fainted? || p2.fainted?
-
-      next unless set == xx
-
-      slowp ''
-      [p1, p2].each do |pkm|
-        fastp(pkm.health_bar)
-      end
     end
 
     # Status conditions
