@@ -3,6 +3,7 @@ require_relative './move.rb'
 
 def one_hit(prompt, p1, p2, _l)
   choice = p1.moves.pretty_p prompt, p1.name
+  # choice = rand(4)
   move = p1.moves[choice]
   factor = p2.factor(move)
   dmg = p2.calc_dmg(p1, move, factor)
@@ -42,14 +43,14 @@ def battle(p1, p2)
     [xx, yy].each do |set|
       one_hit(prompt, *set, [p1, p2])
 
-      if set == xx
-        slowp ''
-        [p1, p2].each do |pkm|
-          fastp(pkm.health_bar)
-        end
-      end
-
       break if p1.fainted? || p2.fainted?
+
+      next unless set == xx
+
+      slowp ''
+      [p1, p2].each do |pkm|
+        fastp(pkm.health_bar)
+      end
     end
 
     # Status conditions

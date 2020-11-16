@@ -13,7 +13,7 @@ Lower_attack_2 = proc do |_atta, defe|
     slowp('But it failed...')
   else
     defe.attack -= 30 * 2
-    defe.attack = defe.attack < 0 ? 0 : defe.attack
+    defe.attack = [0, defe.attack].max
     slowp("#{defe.name}'s Attack stat is lowered!")
   end
 end
