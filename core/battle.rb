@@ -22,7 +22,7 @@ def one_hit(prompt, p1, p2, _l)
           'It has no effect...'.colorize(:red)
         end
 
-  slowp(txt) unless txt.nil?
+  slowp(txt) unless txt.nil? || move.attk == 0
 
   p2.hit(dmg)
   move.special.call(p1, p2) unless move.special.nil?

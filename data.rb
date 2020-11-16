@@ -9,8 +9,13 @@ Recoil_20 = proc do |atta, _defe|
 end
 
 Lower_attack_2 = proc do |_atta, defe|
-  defe.attack -= 30 * 2
-  slowp("#{defe.name}'s Attack stat is lowered!")
+  if defe.attack <= 0
+    slowp('But it failed...')
+  else
+    defe.attack -= 30 * 2
+    defe.attack = defe.attack < 0 ? 0 : defe.attack
+    slowp("#{defe.name}'s Attack stat is lowered!")
+  end
 end
 
 Make_poison_50 = proc do |_atta, defe|

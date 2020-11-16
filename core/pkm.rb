@@ -50,6 +50,6 @@ class Pokemon
   end
 
   def calc_dmg(p1, move, factor)
-    (move.attk * factor * (1 + p1.attack.to_f / 500.0) * (1 - @defense.to_f / 500.0)).round
+    (move.attk * factor * (1 + p1.attack.to_f / 450.0) * (1 - @defense.to_f / 450.0)).round
   end
 end
