@@ -7,7 +7,7 @@ require 'tty-prompt'
 require 'colorize'
 
 def main
-  battle(get_pokemon('alolan_raichu'), get_pokemon('lapras'))
+  battle(get_pokemon('galarian_slowbro'), get_pokemon('onix'))
 end
 
 begin

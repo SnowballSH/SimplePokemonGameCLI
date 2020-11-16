@@ -1,7 +1,7 @@
 require_relative './pkm.rb'
 require_relative './move.rb'
 
-def one_hit(prompt, p1, p2, l)
+def one_hit(prompt, p1, p2, _l)
   choice = p1.moves.pretty_p prompt, p1.name
   move = p1.moves[choice]
   factor = p2.factor(move)
@@ -26,9 +26,6 @@ def one_hit(prompt, p1, p2, l)
 
   p2.hit(dmg)
   move.special.call(p1, p2) unless move.special.nil?
-
-  fastp(l[0].health_bar)
-  fastp(l[1].health_bar)
 end
 
 # Main Battle Function
@@ -44,7 +41,26 @@ def battle(p1, p2)
     yy = [p2, p1].sort { |a, b| a.speed <=> b.speed }
     [xx, yy].each do |set|
       one_hit(prompt, *set, [p1, p2])
+
+      if set == xx
+        slowp ''
+        [p1, p2].each do |pkm|
+          fastp(pkm.health_bar)
+        end
+      end
+
       break if p1.fainted? || p2.fainted?
+    end
+
+    # Status conditions
+
+    slowp ''
+    [p1, p2].each do |pkm|
+      if pkm.poisoned
+        slowp "#{pkm.name} is hurt by the poison!"
+        pkm.hit(10)
+      end
+      fastp(pkm.health_bar)
     end
   end
   slowp "#{p1.fainted? ? p1.name : p2.name} fainted! #{p2.fainted? ? p1.name : p2.name} is the winner!".colorize(:light_green)

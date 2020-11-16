@@ -3,6 +3,20 @@ Recoil_10 = proc do |atta, _defe|
   slowp("#{atta.name} is hurt by the recoil!")
 end
 
+Make_poison_50 = proc do |_atta, defe|
+  if rand(2) == 0
+    defe.poisoned = true
+    slowp("#{defe.name} is poisoned!")
+  end
+end
+
+Make_poison_33 = proc do |_atta, defe|
+  if rand(3) == 0
+    defe.poisoned = true
+    slowp("#{defe.name} is poisoned!")
+  end
+end
+
 MOVES = {
   # Normal
   QuickAttack: ['Quick Attack', 25, 'Normal'],
@@ -32,7 +46,7 @@ MOVES = {
   DragonBreath: ['Dragon Breath', 30, 'Dragon'],
   # Poison
   Acid: ['Acid', 30, 'Poison'],
-  ShellSideArm: ['Shell Side Arm', 45, 'Poison']
+  ShellSideArm: ['Shell Side Arm', 45, 'Poison', Make_poison_33]
 }.freeze
 
 POKEMONS = {
