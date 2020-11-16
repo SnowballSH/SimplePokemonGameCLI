@@ -1,6 +1,7 @@
 class Pokemon
   attr_accessor :name, :hp, :max_hp, :type, :moves, :type_defence,
-                :attack, :defense, :speed, :poisoned
+                :attack, :defense, :speed, :poisoned,
+                :dynamaxed
 
   def initialize(name, hp, type, moves, type_defense, attack, defense, speed)
     @name = name
@@ -13,6 +14,7 @@ class Pokemon
     @defense = defense
     @speed = speed
     @poisoned = false
+    @dynamaxed = false
   end
 
   def stat
@@ -51,5 +53,30 @@ class Pokemon
 
   def calc_dmg(p1, move, factor)
     (move.attk * factor * (1 + p1.attack.to_f / 450.0) * (1 - @defense.to_f / 450.0)).round
+  end
+
+  def dynamax
+    @dynamaxed = 3
+    @hp *= 2
+    @max_hp *= 2
+    slowp("#{@name} is dynamaxed!".colorize(:red))
+  end
+
+  def turn
+    if @poisoned
+      slowp("#{@name} is hurt by the poison!")
+      hit(10)
+    end
+
+    if @dynamaxed != false && @dynamaxed != true
+      @dynamaxed -= 1
+      if @dynamaxed == 0
+        @dynamaxed = true
+        @hp /= 2
+        @max_hp /= 2
+        @hp = 1 if @hp == 0
+        slowp("#{@name} returned to normal!".colorize(:red))
+      end
+    end
   end
 end

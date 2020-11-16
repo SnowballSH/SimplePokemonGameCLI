@@ -40,7 +40,7 @@ def battle(p1, p2)
     moves = []
 
     xx.each_with_index do |set, i|
-      choice = set.moves.pretty_p prompt, p1.name
+      choice = set.moves.pretty_p prompt, set
       # choice = rand(4)
       moves[i] = set.moves[choice]
     end
@@ -52,16 +52,17 @@ def battle(p1, p2)
     end
 
     # Status conditions
-
     slowp ''
     [p1, p2].each do |pkm|
-      if pkm.poisoned
-        slowp "#{pkm.name} is hurt by the poison!"
-        pkm.hit(10)
-      end
+      pkm.turn
       fastp(pkm.health_bar)
     end
   end
-  slowp "#{p1.fainted? ? p1.name : p2.name} fainted! #{p2.fainted? ? p1.name : p2.name} is the winner!".colorize(:light_green)
+
+  if p1.fainted? && p2.fainted?
+    slowp "Both Pokemon fainted, but #{xx[0].name} fainted earlier, which means #{xx[1].name} is the winner!"
+  else
+    slowp "#{p1.fainted? ? p1.name : p2.name} fainted! #{p2.fainted? ? p1.name : p2.name} is the winner!".colorize(:light_green)
+  end
   'SUCCESS'.colorize(:default)
 end
