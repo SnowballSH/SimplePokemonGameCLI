@@ -7,7 +7,7 @@ require 'tty-prompt'
 require 'colorize'
 
 def main
-  battle(get_pokemon('pikachu'), get_pokemon('togekiss'))
+  battle(random_pokemon, random_pokemon)
 end
 
 begin

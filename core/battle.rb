@@ -41,6 +41,11 @@ def battle(p1, p2)
 
     xx.each_with_index do |set, i|
       choice = set.moves.pretty_p prompt, set
+      if choice == 'DYNAMAX'
+        set.dynamax
+        choice = set.moves.pretty_p prompt, set
+      end
+
       # choice = rand(4)
       moves[i] = set.moves[choice]
     end

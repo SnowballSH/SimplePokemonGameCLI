@@ -11,8 +11,12 @@ def create_pokemon(name, hp, type, moves, tds, atk, def_, speed)
   Pokemon.new(name, hp, Type.new(*type),
               MoveArray.new(moves.map do |y|
                 x = MOVES[y]
-                Move.new(x[0], x[1], Type.new(x[2]), x[3])
+                create_move(x)
               end), tds, atk, def_, speed)
+end
+
+def create_move(x)
+  Move.new(x[0], x[1], Type.new(x[2]), x[3])
 end
 
 def slowp(txt, interval = INTERVAL)
@@ -35,4 +39,17 @@ def get_pokemon(name)
   end
 
   create_pokemon(*res)
+end
+
+def random_pokemon
+  # generate random pokemon
+  type = MOVES.keys.select { |x| x.start_with?('Max') || x.start_with?('G-Max') }.map { |x| x[3..-1] }.sample(2)
+  name = POKEMONS[POKEMONS.keys.sample][0][0..2] + POKEMONS[POKEMONS.keys.sample][0][0..2].downcase
+  tds = POKEMONS[POKEMONS.keys.sample][4]
+  hp = rand(150..250)
+  moves = MOVES.keys.select { |x| !(x.start_with?('Max') || x.start_with?('G-Max')) }.sample(4)
+  atk = rand(50..200)
+  def_ = rand(50..200)
+  speed = rand(80..250)
+  create_pokemon(name, hp, type, moves, tds, atk, def_, speed)
 end

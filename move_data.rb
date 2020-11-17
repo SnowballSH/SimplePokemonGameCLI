@@ -34,5 +34,17 @@ MOVES = {
   Acid: ['Acid', 30, 'Poison'],
   ShellSideArm: ['Shell Side Arm', 45, 'Poison', Make_poison_33],
   # Fairy
-  Charm: ['Charm', 0, 'Fairy', Lower_attack_2]
+  Charm: ['Charm', 0, 'Fairy', Lower_attack_2],
+
+  # DX
+  MaxElectric: ['Max Lightning', 85, 'Electric'],
+  MaxFire: ['Max Flare', 85, 'Fire'],
+  MaxFlying: ['Max Airsteam', 85, 'Flying'],
+  MaxNormal: ['Max Strike', 80, 'Normal'],
+  MaxFighting: ['Max Knunkle', 80, 'Fighting'],
+  MaxSteel: ['Max SteelSpike', 80, 'Steel'],
+  MaxPoison: ['Max Ooze', 65, 'Poison', Make_poison_50],
+
+  # GX
+  GMaxPikachu: ['G-Max Volt Crash', 90, 'Electric']
 }.freeze

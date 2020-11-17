@@ -1,5 +1,5 @@
 class Pokemon
-  attr_accessor :name, :hp, :max_hp, :type, :moves, :type_defence,
+  attr_accessor :name, :hp, :max_hp, :type, :moves, :dx_moves, :crr_moves, :type_defence,
                 :attack, :defense, :speed, :poisoned,
                 :dynamaxed
 
@@ -9,12 +9,25 @@ class Pokemon
     @max_hp = hp
     @type = type
     @moves = moves
+    @or_moves = moves
     @type_defense = type_defense
     @attack = attack
     @defense = defense
     @speed = speed
     @poisoned = false
     @dynamaxed = false
+
+    @dx_moves = MoveArray.new(moves.map do |m|
+      if MOVES.key?("GMax#{@name.delete(' ')}".to_sym) && (
+        m.type.type1 == @type.type1 || m.type.type1 == @type.type2
+      )
+        create_move(MOVES["GMax#{@name.delete(' ')}".to_sym])
+      elsif MOVES.key?("Max#{m.type.type1}".to_sym)
+        create_move(MOVES["Max#{m.type.type1}".to_sym])
+      else
+        m
+      end
+    end)
   end
 
   def stat
@@ -25,7 +38,7 @@ class Pokemon
   def health_bar
     x = (@hp.to_f / @max_hp.to_f)
     bar = 30
-    a = (x * bar).round
+    a = (x * (bar - 1)).round + 1
     a = a < 0 ? 0 : a
     b = bar - a
     ("[#{@name}]  |" + '=' * a + '-' * b + '|').colorize(:light_red)
@@ -59,6 +72,7 @@ class Pokemon
     @dynamaxed = 3
     @hp *= 2
     @max_hp *= 2
+    @moves = @dx_moves
     slowp("#{@name} is dynamaxed!".colorize(:red))
   end
 
@@ -75,6 +89,7 @@ class Pokemon
         @hp /= 2
         @max_hp /= 2
         @hp = 1 if @hp == 0
+        @moves = @or_moves
         slowp("#{@name} returned to normal!".colorize(:red))
       end
     end
