@@ -7,7 +7,7 @@ require 'tty-prompt'
 require 'colorize'
 
 def main
-  battle(get_pokemon('Decidueye'), random_pokemon)
+  battle(get_pokemon('Houndoom'), get_pokemon('Decidueye'))
 end
 
 begin

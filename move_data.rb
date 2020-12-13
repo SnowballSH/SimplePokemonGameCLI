@@ -10,12 +10,16 @@ MOVES = {
   WaterPulse: ['Water Pulse', 30, 'Water'],
   HydroPump: ['Hydro Pump', 55, 'Water'],
   Surf: ['Surf', 45, 'Water'],
+  # Fire
+  Ember: ['Ember', 20, 'Fire'],
+  FireFang: ['Fire Fang', 35, 'Fire', Lower_defense_2],
   # Grass
   LeafBlade: ['Leaf Blade', 45, 'Grass'],
   # Electric
   Thunderbolt: ['Thunderbolt', 45, 'Electric'],
   Thunder: ['Thunder', 55, 'Electric'],
   Spark: ['Spark', 30, 'Electric'],
+  ThunderFang: ['Thunder Fang', 35, 'Electric', Lower_defense_2],
   # Steel
   IronTail: ['Iron Tail', 40, 'Steel'],
   # Fighting
@@ -41,10 +45,12 @@ MOVES = {
   # Poison
   Acid: ['Acid', 30, 'Poison'],
   ShellSideArm: ['Shell Side Arm', 45, 'Poison', Make_poison_33],
+  Smog: ['Smog', 20, 'Poison', Make_poison_50],
   # Fairy
-  Charm: ['Charm', 0, 'Fairy', Lower_attack_2],
+  Charm: ['Charm', 0, 'Fairy', Lower_attack_defense_2],
   # Dark
-  Bite: ['Bite', 40, 'Dark'],
+  Bite: ['Bite', 30, 'Dark', Lower_defense_2],
+  Crunch: ['Crunch', 40, 'Dark'],
   # Ghost
   PhantomForce: ['Phantom Force', 45, 'Ghost'],
   SpiritShackle: ['Spirit Shackle', 40, 'Ghost', Lower_speed_1],

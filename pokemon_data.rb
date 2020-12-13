@@ -173,5 +173,28 @@ POKEMONS = {
       Dark: 2
     },
     196, 139, 130
+  ].freeze,
+
+  houndoom: [
+    'Houndoom', 260, %w[Fire Dark], %i[
+      FireFang
+      ThunderFang
+      Crunch
+      Smog
+    ],
+    {
+      Fire: 0.5,
+      Water: 2,
+      Grass: 0.5,
+      Ice: 0.5,
+      Fighting: 2,
+      Ground: 2,
+      Psychic: 0,
+      Rock: 2,
+      Ghost: 0.5,
+      Dark: 0.5,
+      Steel: 0.5
+    },
+    166, 94, 175
   ].freeze
 }.freeze

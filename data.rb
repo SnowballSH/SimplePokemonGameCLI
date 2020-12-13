@@ -17,11 +17,19 @@ end
 
 Lower_attack_2 = proc do |_atta, defe|
   if defe.attack <= 0
-    slowp('But it failed...')
   else
     defe.attack -= AMM * 2
     defe.attack = [0, defe.attack].max
     slowp("#{defe.name}'s Attack harshly fell!")
+  end
+end
+
+Lower_defense_2 = proc do |_atta, defe|
+  if defe.defense <= 0
+  else
+    defe.defense -= AMM * 2
+    defe.defense = [0, defe.defense].max
+    slowp("#{defe.name}'s Defense harshly fell!")
   end
 end
 
@@ -43,7 +51,6 @@ end
 
 Lower_speed_1 = proc do |_atta, defe|
   if defe.speed <= 0
-    slowp('But it failed...')
   else
     defe.speed -= AMM * 1
     defe.speed = [0, defe.speed].max
