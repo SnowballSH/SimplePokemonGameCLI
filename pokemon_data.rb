@@ -132,5 +132,46 @@ POKEMONS = {
       Steel: 2
     },
     200, 175, 148
+  ].freeze,
+
+  zygarde: [
+    'Zygarde', 326, %w[Dragon Ground], %i[
+      Bite
+      DragonPulse
+      CoreEnforcer
+      Earthquake
+    ],
+    {
+      Fire: 0.5,
+      Electric: 0,
+      Ice: 4,
+      Poison: 0.5,
+      Rock: 0.5,
+      Dragon: 2,
+      Fairy: 2
+    },
+    184, 222, 175
+  ].freeze,
+
+  decidueye: [
+    'Decidueye', 266, %w[Grass Ghost], %i[
+      PhantomForce
+      LeafBlade
+      BraveBird
+      SpiritShackle
+    ],
+    {
+      Normal: 0,
+      Fire: 2,
+      Water: 0.5,
+      Electric: 0.5,
+      Grass: 0.5,
+      Fighting: 0,
+      Ground: 0.5,
+      Flying: 2,
+      Ghost: 2,
+      Dark: 2
+    },
+    196, 139, 130
   ].freeze
 }.freeze
