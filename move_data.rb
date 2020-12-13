@@ -3,7 +3,9 @@ MOVES = {
   QuickAttack: ['Quick Attack', 25, 'Normal'],
   Slam: ['Slam', 40, 'Normal'],
   BodySlam: ['Body Slam', 50, 'Normal', Recoil_10],
+  DoubleEdge: ['Double Edge', 70, 'Normal', Recoil_20],
   Tackle: ['Tackle', 25, 'Normal'],
+  Swift: ['Swift', 30, 'Normal'],
   # Water
   WaterPulse: ['Water Pulse', 30, 'Water'],
   HydroPump: ['Hydro Pump', 55, 'Water'],
@@ -35,16 +37,21 @@ MOVES = {
   ShellSideArm: ['Shell Side Arm', 45, 'Poison', Make_poison_33],
   # Fairy
   Charm: ['Charm', 0, 'Fairy', Lower_attack_2],
+  # Dark
+  Bite: ['Bite', 60, 'Dark'],
 
   # DX
   MaxElectric: ['Max Lightning', 85, 'Electric'],
   MaxFire: ['Max Flare', 85, 'Fire'],
   MaxFlying: ['Max Airsteam', 85, 'Flying'],
   MaxNormal: ['Max Strike', 80, 'Normal'],
-  MaxFighting: ['Max Knunkle', 80, 'Fighting'],
-  MaxSteel: ['Max SteelSpike', 80, 'Steel'],
+  MaxFighting: ['Max Knunkle', 85, 'Fighting'],
+  MaxSteel: ['Max SteelSpike', 85, 'Steel'],
   MaxPoison: ['Max Ooze', 65, 'Poison', Make_poison_50],
+  MaxPsychic: ['Max Mindstorm', 85, 'Psychic'],
+  MaxStone: ['Max Rockfall', 85, 'Rock'],
 
   # GX
-  GMaxPikachu: ['G-Max Volt Crash', 90, 'Electric']
+  GMaxPikachu: ['G-Max Volt Crash', 100, 'Electric'],
+  GMaxEevee: ['G-Max Cuddle', 100, 'Normal']
 }.freeze

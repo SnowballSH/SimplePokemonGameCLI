@@ -15,6 +15,20 @@ POKEMONS = {
     103, 76, 166
   ].freeze,
 
+  eevee: [
+    'Eevee', 220, %w[Normal], %i[
+      Tackle
+      Swift
+      DoubleEdge
+      Bite
+    ],
+    {
+      Fighting: 2,
+      Ghost: 0
+    },
+    103, 94, 103
+  ].freeze,
+
   alolan_raichu: [
     'Raichu', 230, %w[Electric Psychic], %i[
       QuickAttack

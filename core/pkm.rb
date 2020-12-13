@@ -40,6 +40,7 @@ class Pokemon
     bar = 30
     a = (x * (bar - 1)).round + 1
     a = a < 0 ? 0 : a
+    a = 0 if @hp <= 0
     b = bar - a
     ("[#{@name}]  |" + '=' * a + '-' * b + '|').colorize(:light_red)
   end

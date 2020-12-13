@@ -26,7 +26,7 @@ def slowp(txt, interval = INTERVAL)
 end
 
 def fastp(txt, interval = INTERVAL / 4 * 3)
-  # print fastly
+  # print fast
   txt.each_char { |c| putc c; $stdout.flush; sleep interval }
   puts ''
 end
@@ -43,11 +43,11 @@ end
 
 def random_pokemon
   # generate random pokemon
-  type = MOVES.keys.select { |x| x.start_with?('Max') || x.start_with?('G-Max') }.map { |x| x[3..-1] }.sample(2)
+  type = MOVES.keys.select { |x| x.start_with?('Max') }.map { |x| x[3..-1] }.sample(2)
   name = POKEMONS[POKEMONS.keys.sample][0][0..2] + POKEMONS[POKEMONS.keys.sample][0][0..2].downcase
   tds = POKEMONS[POKEMONS.keys.sample][4]
   hp = rand(150..250)
-  moves = MOVES.keys.select { |x| !(x.start_with?('Max') || x.start_with?('G-Max')) }.sample(4)
+  moves = MOVES.keys.select { |x| !(x.start_with?('Max') || x.start_with?('GMax')) }.sample(4)
   atk = rand(50..200)
   def_ = rand(50..200)
   speed = rand(80..250)
