@@ -43,13 +43,19 @@ end
 
 def random_pokemon
   # generate random pokemon
-  type = MOVES.keys.select { |x| x.start_with?('Max') }.map { |x| x[3..-1] }.sample(2)
+  type = MOVES.keys.select { |x| x.to_s.start_with?('Max') }.map { |x| x[3..-1] }.sample(2)
   name = POKEMONS[POKEMONS.keys.sample][0][0..2] + POKEMONS[POKEMONS.keys.sample][0][0..2].downcase
   tds = POKEMONS[POKEMONS.keys.sample][4]
   hp = rand(150..250)
-  moves = MOVES.keys.select { |x| !(x.start_with?('Max') || x.start_with?('GMax')) }.sample(4)
+  moves = MOVES.keys.select { |x| !(x.to_s.start_with?('Max') || x.to_s.start_with?('GMax')) }.sample(4)
   atk = rand(50..200)
   def_ = rand(50..200)
   speed = rand(80..250)
   create_pokemon(name, hp, type, moves, tds, atk, def_, speed)
+end
+
+def select_pokemon
+  prompt = TTY::Prompt.new
+
+  create_pokemon(*prompt.select('Which Pokemon? (There are more when you click down)', POKEMONS))
 end
