@@ -23,7 +23,9 @@ def one_hit(_prompt, move, p1, p2)
   slowp(txt) unless txt.nil? || move.attk == 0
 
   p2.hit(dmg)
-  move.special.call(p1, p2) unless move.special.nil?
+  if factor > 0
+    move.special.call(p1, p2) unless move.special.nil?
+  end
 end
 
 # Main Battle Function

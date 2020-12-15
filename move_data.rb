@@ -70,6 +70,7 @@ MOVES = {
   MaxDragon: ['Max Wyrmwind', 75, 'Dragon', Lower_attack_defense_2],
   MaxDark: ['Max Darkness', 85, 'Dark'],
   MaxIce: ['Max Hailstorm', 85, 'Ice'],
+  MaxGround: ['Max Quake', 85, 'Ground'],
   MaxGhost: ['Max Phantom', 75, 'Ghost', Lower_attack_defense_2],
 
   # GX
